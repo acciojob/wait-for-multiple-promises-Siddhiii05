@@ -2,8 +2,8 @@ const output = document.getElementById("output");
 
 function createPromise() {
 	const delay = Math.random * 2 + 1
-	return newPromise((resolve) => {
-		setTimeOut(() => {
+	return new Promise((resolve) => {
+		setTimeout(() => {
 			resolve(delay);
 		},delay * 1000);
 	})
@@ -20,13 +20,13 @@ Promise.all([promise1, promise2, promise3]).then((results) => {
 	const totalTime = (endTime - startTime)/1000;
 
 	output.innerHTML = "";
-	results.forEach(time, index) => {
+	results.forEach((time, index) => {
 		const row = document.createElement("tr");
 		row.innerHTML = `
 			<td>Promise ${index + 1}</td>
 			<td>${time.toFixed(3)}</td>
 		`;
-	}
+	})
 	output.appendChild(row);
 
 	const totalRow = document.createElement("tr");
